@@ -1,0 +1,288 @@
+<header>
+  <div class="text-center" style="position: relative; background:#ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+  <!-- <section class="container" style="background:#ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+    <div class="row">
+      <div class="col text-center"> -->
+          <h1>Is your buffelgrass <font class="greenfont">green</font>?</h1>
+          <h3>A Project of the USA National Phenology Network</h3>
+          <img class="title-image" src="assets/buffelgrass-logo.png">
+
+      <!-- </div>
+    </div>
+  </section> -->
+  </div>
+  <!-- <section class="container px-2" style="background:#ffffff;">
+    <div class="row">
+      <div class="col-12">
+        <img class="float-left mr-2" width="50%" src="assets/Lilac-575023.jpg">
+        Welcome to the USA National Phenology Network's Track a Lilac citizen science project! Your observation of lilac leafing and flowering will contribute to an effort to track the spring activity of lilacs across the country. The steps are simple - mark your location, tell us what you see on your plant, and submit your report! 
+      </div>
+    </div>
+  </section> -->
+</header>
+
+<section class="container p-2" style="background:#ffffff">
+
+    <div class="row mb-2">
+      <div class="col-12">
+        <!-- <img class="float-left mr-2" width="50%" src="assets/Lilac-575023.jpg"> -->
+        Welcome to the USA National Phenology Network's (USA-NPN) buffelgrass green-up reporting page! Your observations of buffelgrass green-up will help improve the USA-NPN's <a href="https://usanpn.org/data/forecasts/Buffelgrass">Pheno Forecast</a> that predicts when and where buffelgrass is green across the state of Arizona.
+        <br>
+        <br>
+        <a href="https://usanpn.org/data/forecasts/Buffelgrass">Learn more about our forecasts »</a>
+        <br>
+        <a href="https://lp.constantcontact.com/su/k6y1PCB/buffelgrass">Sign up for weekly notifications of buffelgrass green-up »</a>
+        <br>
+        <br>
+        The steps are simple - mark your location and the date of your observation, tell us what you see on your buffelgrass, and submit your report!
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body p-1">
+          <div class="d-flex flex-row align-items-center">
+            <div width="45px">
+              <div class='circle'>
+                <div>1</div>
+              </div>
+            </div>
+            <!-- <h1><span class="orange">1</span></h1> -->
+            <div class="section-title">
+              Show us where you are
+            </div>
+          </div>
+          <div #gmap style="width:100%;height:250px"></div>
+          <div class="row">
+            <div class="col-md-12">
+              <!-- <form> -->
+                  <!-- <div class="input-group">
+                    <label class="sr-only" for="locationInput">Location</label>
+                    <input class="form-control" id="locationInput" placeholder="Enter Location" type="text" name="states"
+                      [ngModel]="fullLocation" (ngModelChange)="addressChange($event)">
+                  </div> -->
+                  <ng4geo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete>
+                <!-- </form> -->
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body p-1">
+          <div class="d-flex flex-row align-items-center">
+            <div width="45px">
+              <div class='circle'>
+                <div>2</div>
+              </div>
+            </div>
+            <!-- <h1><span class="orange">1</span></h1> -->
+            <div class="section-title">
+              When did you observe?
+            </div>
+          </div>
+          <div class="row justify-content-md-center" >
+            <div class="col-md-3">
+              <form class="form-inline">
+                <div class="form-group" >
+                  <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd"
+                           name="dp" [(ngModel)]="dateModel" ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-dark calendar" (click)="d.toggle()" type="button"></button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+    
+    <hr/>
+    <pre>Model: {{ model | json }}</pre> -->
+
+    <div class="card my-2">
+      <div class="card-body p-1">
+        <div class="d-flex flex-row align-items-center">
+          <div width="45px">
+              <div class='circle'>
+                  <div>3</div>
+              </div>
+          </div>
+          <div class="section-title">
+            Tell us what you see on your Buffelgrass
+          </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-center">
+          <div class="entry-cell-left">
+          </div>
+          <div class="d-flex flex-row border align-items-center justify-content-between entry-cell-right p-1">
+              <!-- <div class="date-time">
+                  {{dateTime}}
+              </div>
+              <div class="all-no" (click)="circleAllNo()">
+                  circle all no
+              </div> -->
+              <div class="report flex-grow-1 text-center">
+              Report yes, no, or not sure.
+              </div>
+          </div>
+        </div>
+
+        <div *ngFor="let phenophase of phenophases; let i = index" class="d-flex flex-row justify-content-center clickable">
+          <div class="border entry-cell-left"
+            [ngStyle]="{ 'background-color': phenophase.color === 'Green1' ? 'rgb(92,151,80)' : 'rgb(154,193,126)'}"
+            data-toggle="modal" data-target="#myModal" (click)="showPhenophaseDetails(phenophase)"> <!--data-toggle="tooltip"--><!--ngbTooltip="breakingLeafBudsToolTip"--><!--title="{{phenophase.definition}}"-->
+            <div class="d-flex align-items-center justify-content-between">
+                Do you see <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="info m-1"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z"/></svg>
+                <!-- <img class="float-right m-1 info" src="assets/info.svg"/> -->
+            </div>
+            <div class="font-weight-bold">
+                {{phenophase.phenophase_name}}?
+            </div>
+          </div>
+          <div class="d-flex flex-row border align-items-center entry-cell-right justify-content-around">
+              <button class="btn btn-default btn-circle font-weight-bold m-2"
+                [ngClass]="{'chosen':phenophase.selection === 'Y'}"
+                (click)="setPhenophase(phenophase, 'Y')">Y</button>
+              <button class="btn btn-default btn-circle font-weight-bold m-2"
+                [ngClass]="{'chosen':phenophase.selection === 'N'}"
+                (click)="setPhenophase(phenophase, 'N')">N</button>
+              <button class="btn btn-default btn-circle font-weight-bold m-2"
+                [ngClass]="{'chosen':phenophase.selection === '?'}"
+                (click)="setPhenophase(phenophase, '?')">?</button>
+          </div>
+        </div>
+
+        <!-- <div class="d-flex flex-row justify-content-center">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>{{selectedAbundance ? selectedAbundance.abundance_name : "What percentage of the plant is green?"}}</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button *ngFor="let abundance of abundances; let i = index" (click)="selectAbundance(abundance)" ngbDropdownItem>{{abundance.abundance_name}}</button>
+                </div>
+              </div>
+        </div> -->
+        
+
+        <div class="d-flex flex-row justify-content-center">
+          <div class="border entry-cell-left"
+            [ngStyle]="{ 'background-color': 'rgb(92,151,80)'}"> 
+            <div class="font-weight-bold">
+              What percentage of the plant is green?
+            </div>
+          </div>
+          <div class="d-flex flex-row border align-items-center entry-cell-right justify-content-around">
+
+              <div class="row">
+                  <div class="col">
+                    <div ngbDropdown class="d-inline-block">
+                      <button class="btn btn-outline-dark" id="dropdownBasic1" ngbDropdownToggle>{{selectedAbundance ? selectedAbundance.abundance_name : "Select value?"}}</button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button *ngFor="let abundance of abundances; let i = index" (click)="selectAbundance(abundance)" ngbDropdownItem>{{abundance.abundance_name}}</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div *ngIf="validationErrorMsg != null" class="alert alert-danger" role="alert">
+      {{validationErrorMsg}}
+    </div>
+
+    <button *ngIf="!observationsSubmitted" (click)="submitObservations()" type="button"
+      class="btn btn-success btn-lg btn-block font-weight-bold p-1 mt-4">
+      <div class="d-flex flex-row align-items-center">
+        <div width="45px">
+          <div class='circle'>
+            <div>4</div>
+          </div>
+        </div>
+        <div class="flex-grow-1 align-self-center text-center">
+            Report Your Observations
+        </div>
+      </div>
+    </button>
+
+    <div *ngIf="observationsSubmitted" class="card my-2"> <!--*ngIf="observationsSubmitted"-->
+      <div class="card-body p-1">
+        <!-- <div class="d-flex flex-row align-items-center"> -->
+          <div class="section-title align-self-center">
+            Thank you for submitting your buffelgrass observations. 
+          </div>
+          <!-- <div class="section-title align-self-center text-center">
+            <a class="btn btn-dark" href="https://buffelgrass.usanpn.org">Report another observation</a>
+          </div> -->
+
+          <div class="section-title align-self-center text-center">
+            <button (click)="resetObservations()" type="button"
+            class="btn btn-dark font-weight-bold p-1 mt-4">
+              <div class="flex-grow-1 align-self-center text-center">
+                Report another observation
+              </div>
+            </button>
+          </div>
+
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div style="height: 30px;">
+       
+    </div>
+    <hr>
+
+    <div class="d-flex justify-content-center align-items-center">
+          <a class="footerlink m-4" href="https://www.usgs.gov"><img src="assets/usgs-logo.svg" class="footerimage"/></a>
+          <a class="footerlink m-4" href="https://www.usanpn.org"><img src="assets/npn-logo-2019.png" class="footerimage"/></a>
+    </div>
+    
+    
+  
+</section>
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{phenophaseName}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img class="float-left mr-2" src="{{phenophaseImage}}" width="100%" style="max-height: 300px;"/> <!--width="200px" height="200px"-->
+          {{phenophaseDefinition}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<footer>
+</footer>
+

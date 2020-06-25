@@ -1,0 +1,116 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$background-fill-color: rgb(238,239,239);
+$background-grid-color: rgb(220,230,235);
+
+/******************************************************************
+Site Name: USA NPN
+Author: Chad Bush of Raven's Eye Design
+
+Stylesheet: Constants Stylesheet
+
+******************************************************************/
+
+/*********************
+COLORS
+*********************/
+
+
+// Scaffolding
+// -------------------------
+$bodyBackground: #fff !default;
+$textColor: #000 !default;
+$borderColor: #b2b2b2;
+
+// Links
+// -------------------------
+$linkColor: #55af2f !default;
+$linkColorHover: #a2d55d !default;
+$linkColorVisited: lighten($linkColor, 10%) !default;
+
+
+/******************************************************************
+LOAD FONTS
+******************************************************************/
+
+@font-face{
+font-family:"FrutigerLTW01-55Roman";
+src:url("./fonts/af97a512-f55a-4f61-b2ce-659c883930fc.eot?#iefix");
+src:url("./fonts/af97a512-f55a-4f61-b2ce-659c883930fc.eot?#iefix") format("eot"),url("./fonts/3fbbd6b1-cfa7-4ff0-97ea-af1b2c489f15.woff") format("woff"),url("./fonts/076311f8-a01b-4389-a5eb-334a62e62d45.ttf") format("truetype"),url("./fonts/c59a36ab-4ef8-4ee1-a2f8-48aa79d4f877.svg#c59a36ab-4ef8-4ee1-a2f8-48aa79d4f877") format("svg");
+}
+@font-face{
+font-family:"FrutigerLTW01-56Italic";
+src:url("./fonts/fcbab1a3-9659-4b39-8479-cc1f50d18f55.eot?#iefix");
+src:url("./fonts/fcbab1a3-9659-4b39-8479-cc1f50d18f55.eot?#iefix") format("eot"),url("./fonts/e2ade8a9-bd48-45e7-95e6-9dc917ba4f74.woff") format("woff"),url("./fonts/19fe9614-8825-4e7d-b8c3-230d2561e0e2.ttf") format("truetype"),url("./fonts/c2f8e3aa-1c1a-49ee-9ec7-30f61a5e96d3.svg#c2f8e3aa-1c1a-49ee-9ec7-30f61a5e96d3") format("svg");
+}
+@font-face{
+font-family:"Frutiger LT W01 65 Bold";
+src:url("./fonts/fbd7c0fb-f004-4e83-81d2-1d400413a873.eot?#iefix");
+src:url("./fonts/fbd7c0fb-f004-4e83-81d2-1d400413a873.eot?#iefix") format("eot"),url("./fonts/9aa32a81-1124-4c43-b3db-15bfb1f7aed2.woff") format("woff"),url("./fonts/6faffbf4-f8e8-4817-b24b-a390e166be7e.ttf") format("truetype"),url("./fonts/fc09de64-de25-425e-90dc-a0cae29b02c4.svg#fc09de64-de25-425e-90dc-a0cae29b02c4") format("svg");
+}
+@font-face{
+font-family:"FrutigerLTW01-66BoldIta";
+src:url("./fonts/f334dc11-1de8-4ae2-9c2a-a1cfa665263b.eot?#iefix");
+src:url("./fonts/f334dc11-1de8-4ae2-9c2a-a1cfa665263b.eot?#iefix") format("eot"),url("./fonts/f74530f5-a39c-47e3-97d9-6821fc4df8c0.woff") format("woff"),url("./fonts/aa626e7f-57dd-4084-9486-3eeb921333c0.ttf") format("truetype"),url("./fonts/8f91ebb0-2b00-4a50-baa9-865a6502384e.svg#8f91ebb0-2b00-4a50-baa9-865a6502384e") format("svg");
+}
+@font-face{
+font-family:"FrutigerLTW01-75Black";
+src:url("./fonts/9b0d3be7-4ec5-4a72-8cc6-89b8b0f0b193.eot?#iefix");
+src:url("./fonts/9b0d3be7-4ec5-4a72-8cc6-89b8b0f0b193.eot?#iefix") format("eot"),url("./fonts/70ad2f15-9e1e-4a42-8fdc-30327ef510c3.woff") format("woff"),url("./fonts/ed897ec7-c1b8-4bd4-9d2a-0a7b09661bdc.ttf") format("truetype"),url("./fonts/63e3258b-8e81-4153-ba11-ab8f4b2aa7a3.svg#63e3258b-8e81-4153-ba11-ab8f4b2aa7a3") format("svg");
+}
+
+
+/*********************
+TYPOGRAPHY
+*********************/
+
+$sansFontFamily: "FrutigerLTW01-55Roman", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$serifFontFamily: Georgia, "Times New Roman", Times, serif !default;
+$monoFontFamily: Consolas, Monaco, Menlo, "Courier New", monospace !default;
+
+$baseFontSize: 14px !default;
+$baseFontFamily: $sansFontFamily !default;
+$baseLineHeight: 20px !default;
+$altFontFamily: $serifFontFamily !default;
+
+$romanFontFamily: "FrutigerLTW01-55Roman" !default;
+$italicFontFamily: "FrutigerLTW01-56Italic" !default;
+$boldFontFamily: "Frutiger LT W01 65 Bold" !default;
+$boldItalicFontFamily: "FrutigerLTW01-66BoldIta" !default;
+$blackFontFamily: "FrutigerLTW01-75Black" !default;
+
+@mixin romanFont() {
+  font-weight: normal;
+  font-style: normal;
+  font-family: $romanFontFamily;
+}
+
+@mixin italicFont() {
+  font-weight: normal;
+  font-style: normal;
+  font-family: $italicFontFamily;
+}
+
+@mixin boldFont() {
+ font-weight: normal;
+ font-style: normal;
+ font-family: $boldFontFamily;
+}
+
+@mixin boldItalicFont() {
+  font-style: normal;
+  font-weight: normal;
+  font-family: $boldItalicFontFamily;
+}
+
+@mixin blackFont() {
+  font-style: normal;
+  font-weight: normal;
+  font-family: $blackFontFamily;
+}

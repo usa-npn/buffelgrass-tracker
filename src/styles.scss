@@ -1,0 +1,215 @@
+/* You can add global styles to this file, and also import other style files */
+
+$dark-green: rgb(92,151,80);
+$light-green: rgb(154,193,126);
+$neon-blue: rgb(98,196,250);
+$orange: rgb(236,158,63);
+$orange-dark: rgb(227,116,27);
+$brown: rgb(105,75,24);
+
+
+$theme-colors: (
+  success: $dark-green
+);
+
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap/scss/bootstrap';
+@import "styles-variables";
+
+body {
+    /* Vertical lines */
+    background-color: $background-fill-color;
+    background-image:
+      linear-gradient(
+        to right,
+        $background-grid-color 0,
+        $background-grid-color 1px,
+        transparent 1px,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        $background-grid-color 0,
+        $background-grid-color 1px,
+        transparent 1px,
+        transparent 100%
+      )
+    ;
+    //background-position: 100px 0, 0 0;
+    background-size: 23px 23px;
+  }
+
+  span.orange {
+    background: rgb(236,158,63);
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 15px;
+    text-align: center;
+    width: 1.6em; 
+  }
+
+  // .circle {
+  //   position: relative;
+  //   display: inline-block;
+  //   width: 50px;
+  //   height: 50px;
+  //   padding: 25px 0;
+  //   border-radius: 50%;
+  //   background: rgb(236,158,63);
+  //   color: white;
+  //   text-align: center;
+  // }
+
+  .circle {
+    display: flex;
+    background: rgb(236,158,63);
+    color: white;
+    // border: 3px solid #fff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 4px;
+    font-weight: bold;
+  }
+
+  .btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    background-color: white;
+}
+
+.border-3 {
+  border-width:3px !important;
+}
+
+.entry-cell-left {
+  height: 50px;
+  width: 180px;
+  font-size: 14px;
+}
+.entry-cell-right {
+  height: 50px;
+  width: 195px;
+}
+.date-time {
+  color: $neon-blue;
+  font-size: 12px;
+  font-weight: bold;
+}
+.report {
+  color: $orange;
+  font-size: 12px;
+  font-weight: bold;
+}
+.all-no {
+  color: $orange;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.section-title {
+  color: $dark-green;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.greenfont {
+  color: $dark-green;
+}
+
+h1 {
+  color: $brown;
+  font-weight: bold;
+  font-size: 60px;
+}
+
+h3 {
+  color: $brown;
+  font-size: 20px;
+}
+
+.chosen {
+  border-width: 2px;
+  border-color: $orange;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+hr {
+  border:none;
+  border-top:1px dashed #999999;
+  color:#fff;
+  background-color:#fff;
+  height:1px;
+}
+
+.footerlink {
+  width: 40%;
+  max-width: 220px;
+}
+
+.footerimage {
+  width: 100%;
+}
+
+.info {
+  // fill: #fff;
+  fill: lightgray;
+}
+
+.title-image {
+  height: 200px;
+  // width:100%;
+  // max-width: 600px;
+  // max-height: 300px;
+}
+
+.nn-image {
+  max-width: 300px;
+  max-height: 150px;
+}
+
+.arrow-link {
+  color: $orange;
+}
+
+a:hover {
+  color: $orange;
+}
+
+a:visited {
+  color: $orange !important;
+}
+
+a:active {
+  color: $orange !important;
+}
+
+a {
+  color: $orange !important;
+}
+
+.btn-secondary {
+  background-color: $orange;
+  border-width: 0px;
+}
+
+.btn-secondary:hover {
+  background-color: $orange-dark;
+  border-width: 0px;
+}
