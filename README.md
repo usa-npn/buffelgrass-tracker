@@ -1,6 +1,6 @@
 # Buffelgrass Tracker
 
-This is the angular webpage for the buffelgrass tracking project. You can view it at https://data.usanpn.org/buffelgrass-tracker/ or buffelgrass.usanpn.org via redirect.
+This is the angular webpage for the buffelgrass tracking project. You can view it at buffelgrass.usanpn.org.
 The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
 
 # Requirements
