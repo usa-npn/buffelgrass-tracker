@@ -177,11 +177,15 @@
         </div> -->
         
 
-        <div class="d-flex flex-row justify-content-center">
+        <div class="d-flex flex-row justify-content-center clickable">
           <div class="border entry-cell-left"
-            [ngStyle]="{ 'background-color': 'rgb(92,151,80)'}"> 
+            [ngStyle]="{ 'background-color': 'rgb(92,151,80)'}"
+            data-toggle="modal" data-target="#greenessModal"> 
+            <div class="d-flex align-items-center justify-content-between font-weight-bold">
+              What percentage of <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="info m-1"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z"/></svg>
+            </div>
             <div class="font-weight-bold">
-              What percentage of the plant is green?
+              the plant is green?
             </div>
           </div>
           <div class="d-flex flex-row border align-items-center entry-cell-right justify-content-around">
@@ -275,6 +279,65 @@
         <div class="modal-body">
           <img class="float-left mr-2" src="{{phenophaseImage}}" width="100%" style="max-height: 300px;"/> <!--width="200px" height="200px"-->
           {{phenophaseDefinition}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="greenessModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Percent Green Guide</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Less than 5%</h5>
+              <img class="float-left mr-2" src="assets/Buffegrass_Lessthan5percentgreen.JPG" width="100%" style="max-height: 300px;"/>
+            </div>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">5-24%</h5>
+              <img class="float-left mr-2" src="assets/Buffelgrass_5to24percentgreen.JPG" width="100%" style="max-height: 300px;"/>
+            </div>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">25-49%</h5>
+              <img class="float-left mr-2" src="assets/Buffelgrass_25-49percentgreen.JPG" width="100%" style="max-height: 300px;"/>
+            </div>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">50-74%</h5>
+              <img class="float-left mr-2" src="assets/Buffelgrass_50-74percentgreen.jpeg" width="100%" style="max-height: 300px;"/>
+            </div>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">75-94%</h5>
+              <img class="float-left mr-2" src="assets/Buffelgrass_75-94percentgreen.jpeg" width="100%" style="max-height: 300px;"/>
+            </div>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Greater than 95%</h5>
+              <img class="float-left mr-2" src="assets/Buffelgrass_95ormorepercentgreen.JPG" width="100%" style="max-height: 300px;"/>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
