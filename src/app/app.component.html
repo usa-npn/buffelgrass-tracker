@@ -3,10 +3,10 @@
   <!-- <section class="container" style="background:#ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
     <div class="row">
       <div class="col text-center"> -->
-          <h1>Is your buffelgrass <font class="greenfont">green</font>?</h1>
+          <h1><font class="greenfont">Red Brome and Cheatgrass reporting</font></h1>
           <h3>A Project of the USA National Phenology Network</h3>
-          <img class="title-image" src="assets/buffelgrass-logo.png">
-
+          <img class="title-image" src="assets/bromus-spp-brome-grass.png">
+          <div style="text-align:center;">Image Credit: Tracey Saxby, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">(CC BY-SA 4.0)</a></div>
       <!-- </div>
     </div>
   </section> -->
@@ -26,15 +26,13 @@
     <div class="row mb-2">
       <div class="col-12">
         <!-- <img class="float-left mr-2" width="50%" src="assets/Lilac-575023.jpg"> -->
-        Welcome to the USA National Phenology Network's (USA-NPN) buffelgrass green-up reporting page! Your observations of buffelgrass green-up will help improve the USA-NPN's <a href="https://usanpn.org/data/forecasts/Buffelgrass">Pheno Forecast</a> that predicts when and where buffelgrass is green across the state of Arizona.
+        Welcome to the USA National Phenology Network's (USA-NPN) Red Brome and Cheatgrass green-up reporting page! Your observations will help improve the USA-NPN's <a href="https://usanpn.org/data/forecasts">Pheno Forecast</a> predictions.
         <br>
         <br>
-        <a href="https://usanpn.org/data/forecasts/Buffelgrass">Learn more about our forecasts »</a>
-        <br>
-        <a href="https://lp.constantcontact.com/su/k6y1PCB/buffelgrass">Sign up for weekly notifications of buffelgrass green-up »</a>
+        <a href="https://usanpn.org/data/forecasts/red_brome">Learn more about our Red Brome forecasts »</a>
         <br>
         <br>
-        The steps are simple - mark your location and the date of your observation, tell us what you see on your buffelgrass, and submit your report!
+        The steps are simple - mark your location and the date of your observation, tell us what you see on your Red Brome or Cheatgrass, and submit your report!
       </div>
     </div>
 
@@ -67,6 +65,8 @@
       </div>
     </div>
 
+    <br>
+
     <div class="card">
       <div class="card-body p-1">
           <div class="d-flex flex-row align-items-center">
@@ -98,6 +98,42 @@
       </div>
     </div>
 
+    <br>
+
+    <div class="card">
+      <div class="card-body p-1">
+          <div class="d-flex flex-row align-items-center">
+            <div width="45px">
+              <div class='circle'>
+                <div>3</div>
+              </div>
+            </div>
+            <!-- <h1><span class="orange">1</span></h1> -->
+            <div class="section-title">
+              What species did you observe?
+            </div>
+          </div>
+          <div class="row justify-content-md-center" >
+            <div class="col-md-3">
+              <form class="form-inline">
+                <div class="form-group" >
+                  
+                  <div ngbDropdown class="d-inline-block">
+                    <button class="btn btn-outline-dark" id="dropdownBasic1" ngbDropdownToggle>{{selectedSpecies ? selectedSpecies.common_name : "Select value?"}}</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button *ngFor="let sp of species; let i = index" (click)="selectSpecies(sp)" ngbDropdownItem>{{sp.common_name}}</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <br>
+
     <!-- <form class="form-inline">
       <div class="form-group">
         <div class="input-group">
@@ -118,11 +154,11 @@
         <div class="d-flex flex-row align-items-center">
           <div width="45px">
               <div class='circle'>
-                  <div>3</div>
+                  <div>4</div>
               </div>
           </div>
           <div class="section-title">
-            Tell us what you see on your Buffelgrass
+            Tell us what you see
           </div>
         </div>
 
@@ -139,6 +175,33 @@
               <div class="report flex-grow-1 text-center">
               Report yes, no, or not sure.
               </div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-center clickable">
+          <div class="border entry-cell-left"
+            [ngStyle]="{ 'background-color': 'rgb(92,151,80)'}"
+            data-toggle="modal" data-target="#greenessModal"> 
+            <div class="d-flex align-items-center justify-content-between font-weight-bold">
+              What is the overall <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="info m-1"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z"/></svg>
+            </div>
+            <div class="font-weight-bold">
+            color of the plant?
+            </div>
+          </div>
+          <div class="d-flex flex-row border align-items-center entry-cell-right justify-content-around">
+
+              <div class="row">
+                  <div class="col">
+                    <div ngbDropdown class="d-inline-block">
+                      <button class="btn btn-outline-dark" id="dropdownBasic1" ngbDropdownToggle>{{selectedAbundance ? selectedAbundance.abundance_name : "Select value?"}}</button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button *ngFor="let abundance of abundances; let i = index" (click)="selectAbundance(abundance)" ngbDropdownItem>{{abundance.abundance_name}}</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
           </div>
         </div>
 
@@ -176,34 +239,6 @@
               </div>
         </div> -->
         
-
-        <div class="d-flex flex-row justify-content-center clickable">
-          <div class="border entry-cell-left"
-            [ngStyle]="{ 'background-color': 'rgb(92,151,80)'}"
-            data-toggle="modal" data-target="#greenessModal"> 
-            <div class="d-flex align-items-center justify-content-between font-weight-bold">
-              What percentage of <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="info m-1"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z"/></svg>
-            </div>
-            <div class="font-weight-bold">
-              the plant is green?
-            </div>
-          </div>
-          <div class="d-flex flex-row border align-items-center entry-cell-right justify-content-around">
-
-              <div class="row">
-                  <div class="col">
-                    <div ngbDropdown class="d-inline-block">
-                      <button class="btn btn-outline-dark" id="dropdownBasic1" ngbDropdownToggle>{{selectedAbundance ? selectedAbundance.abundance_name : "Select value?"}}</button>
-                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button *ngFor="let abundance of abundances; let i = index" (click)="selectAbundance(abundance)" ngbDropdownItem>{{abundance.abundance_name}}</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              
-          </div>
-        </div>
-        
       </div>
     </div>
 
@@ -216,7 +251,7 @@
       <div class="d-flex flex-row align-items-center">
         <div width="45px">
           <div class='circle'>
-            <div>4</div>
+            <div>5</div>
           </div>
         </div>
         <div class="flex-grow-1 align-self-center text-center">
@@ -229,7 +264,7 @@
       <div class="card-body p-1">
         <!-- <div class="d-flex flex-row align-items-center"> -->
           <div class="section-title align-self-center">
-            Thank you for submitting your buffelgrass observations. 
+            Thank you for submitting your observations. 
           </div>
           <!-- <div class="section-title align-self-center text-center">
             <a class="btn btn-dark" href="https://buffelgrass.usanpn.org">Report another observation</a>
@@ -277,8 +312,9 @@
           </button>
         </div>
         <div class="modal-body">
+          <div [innerHTML]='phenophaseDefinition'></div>
           <img class="float-left mr-2" src="{{phenophaseImage}}" width="100%" style="max-height: 300px;"/> <!--width="200px" height="200px"-->
-          {{phenophaseDefinition}}
+          <div style="text-align:right;" [innerHTML]='phenoPhotoCredit'></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -291,7 +327,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Percent Green Guide</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{selectedSpeciesName}} Color Guide</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -299,45 +335,32 @@
         <div class="modal-body">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Less than 5%</h5>
-              <img class="float-left mr-2" src="assets/Buffegrass_Lessthan5percentgreen.JPG" width="100%" style="max-height: 300px;"/>
+              <h5 class="card-title">Green</h5>
+              <img *ngIf="selectedSpeciesName == 'Cheatgrass'" class="float-left mr-2" src="assets/cheatgrass flowering 3.JPG" width="100%" style="max-height: 300px;"/>
+              <img *ngIf="selectedSpeciesName == 'Red Brome'" class="float-left mr-2" src="assets/red brome flowering Scott Goetz.JPG" width="100%" style="max-height: 300px;"/>
+              <div *ngIf="selectedSpeciesName == 'Red Brome'" style="text-align:right;">Credit: Scott Goetz</div>
             </div>
           </div>
           <br>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">5-24%</h5>
-              <img class="float-left mr-2" src="assets/Buffelgrass_5to24percentgreen.JPG" width="100%" style="max-height: 300px;"/>
+              <h5 class="card-title">Red</h5>
+              <img *ngIf="selectedSpeciesName == 'Cheatgrass'" class="float-left mr-2" src="assets/Cheatgrass_NV_1.jpeg" width="100%" style="max-height: 300px;"/>
+              <img *ngIf="selectedSpeciesName == 'Red Brome'" class="float-left mr-2" src="assets/1920px-2013-06-27_14_43_17_Invasive_Cheat_grass_on_Spruce_Mountain,_Nevada.jpeg" width="100%" style="max-height: 300px;"/>
+              <div *ngIf="selectedSpeciesName == 'Cheatgrass'" style="text-align:right;">Credit: Toiyabe, <a href="https://www.gnu.org/licenses/fdl-1.3.en.html" target="_blank">(GNU Free Documentation License)</a></div>
+              <div *ngIf="selectedSpeciesName == 'Red Brome'" style="text-align:right;">Credit: Famartin, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">(CC BY-SA 3.0)</a></div>
             </div>
           </div>
           <br>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">25-49%</h5>
-              <img class="float-left mr-2" src="assets/Buffelgrass_25-49percentgreen.JPG" width="100%" style="max-height: 300px;"/>
+              <h5 class="card-title">Tan</h5>
+              <img *ngIf="selectedSpeciesName == 'Cheatgrass'" class="float-left mr-2" src="assets/5391962-WEB.jpg" width="100%" style="max-height: 300px;"/>
+              <img *ngIf="selectedSpeciesName == 'Red Brome'" class="float-left mr-2" src="assets/red brome ripe fruits.JPG" width="100%" style="max-height: 300px;"/>
+              <div *ngIf="selectedSpeciesName == 'Cheatgrass'" style="text-align:right;">John M. Randall, The Nature Conservancy <a href="https://bugwood.org" target="_blank">(Bugwood.org)</a></div>
             </div>
           </div>
           <br>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">50-74%</h5>
-              <img class="float-left mr-2" src="assets/Buffelgrass_50-74percentgreen.jpeg" width="100%" style="max-height: 300px;"/>
-            </div>
-          </div>
-          <br>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">75-94%</h5>
-              <img class="float-left mr-2" src="assets/Buffelgrass_75-94percentgreen.jpeg" width="100%" style="max-height: 300px;"/>
-            </div>
-          </div>
-          <br>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Greater than 95%</h5>
-              <img class="float-left mr-2" src="assets/Buffelgrass_95ormorepercentgreen.JPG" width="100%" style="max-height: 300px;"/>
-            </div>
-          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

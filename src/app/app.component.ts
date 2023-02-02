@@ -39,6 +39,8 @@ export class AppComponent {
   selectedAbundance: Abundance;
   phenophases: Phenophase[];
   species: Species[];
+  selectedSpecies: Species;
+
 
   // used for definition popups
   phenophaseName;
@@ -95,15 +97,47 @@ export class AppComponent {
     }
   }
 
+  public phenoPhotoCredit = ``;
   showPhenophaseDetails(phenophase: Phenophase) {
     this.phenophaseDefinition = phenophase.definition;
     this.phenophaseName = phenophase.phenophase_name;
-    if(phenophase.phenophase_name === 'breaking leaf buds')
-      this.phenophaseImage = "https://www.usanpn.org/files/shared/images/phenophases/Syringa_vulgaris_emerge-leaves.jpg";
-    if(phenophase.phenophase_name === 'open flowers')
-      this.phenophaseImage = "https://www.usanpn.org/files/shared/images/phenophases/Syringa_vulgaris_first-bloom.jpg";
-    if(phenophase.phenophase_name === 'full flowering')
-      this.phenophaseImage = "https://www.usanpn.org/files/shared/images/phenophases/Syringa_vulgaris_full-bloom.jpg";
+    if(this.selectedSpecies.common_name == 'Cheatgrass') {
+      if(phenophase.phenophase_name === 'Leaves') {
+        this.phenophaseImage = "assets/cheat-leaves.jpeg";
+        this.phenoPhotoCredit = `Credit: John Hilty, <a href="https://creativecommons.org/licenses/by-nc/2.0/" target="_blank">(CC BY-NC)</a>`;
+      }
+      if(phenophase.phenophase_name === 'Flowers') {
+        this.phenophaseImage = "assets/cheat-flowers.jpeg";
+        this.phenoPhotoCredit = `Credit: Paul Rothrock, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">(CC BY-SA)</a>`;
+      }
+      if(phenophase.phenophase_name === 'Fruits') {
+        this.phenophaseImage = "assets/cheat-fruits.jpeg";
+        this.phenoPhotoCredit = `Credit: Max Licher, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">(CC BY-SA)</a>`;
+        this.phenophaseDefinition = "One or more fruits are visible on the plant. For Bromus tectorum, the fruit is a tiny grain, hidden within tiny bracts and grouped into small clusters that hang on the end of branches along a drooping seed head, that changes texture from soft or watery to hard and drops from the plant. Do not include seed heads that have already dropped all of their grains."
+      }
+    }
+    else if(this.selectedSpecies.common_name == 'Red Brome') {
+      if(phenophase.phenophase_name === 'Leaves') {
+        this.phenophaseImage = "assets/bromus-leaves.jpeg";
+        this.phenoPhotoCredit = `Credit: Dr. Michael Pfeiffer`;
+      }
+      if(phenophase.phenophase_name === 'Flowers') {
+        this.phenophaseImage = "assets/bromus-flowers.jpeg";
+        this.phenoPhotoCredit = `Credit: Max Licher, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">(CC BY-SA)</a>`;
+      }
+      if(phenophase.phenophase_name === 'Fruits') {
+        this.phenophaseImage = "assets/bromus-fruits.jpeg";
+        this.phenoPhotoCredit = `Credit: Patrick Alexander, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">(CC BY-SA)</a>`;
+        this.phenophaseDefinition = "One or more ripe fruits are visible on the plant. For Bromus rubens, a fruit is considered ripe when it is hard when squeezed and difficult to divide with a fingernail, or when it readily drops from the plant when touched. Do not include seed heads that have already dropped all of their grains.";
+      }
+     }
+     else {
+      this.phenophaseImage = "";
+      this.phenoPhotoCredit = ``;
+      this.phenophaseDefinition = "";
+     }
+      
+    
   }
 
   circleAllNo() {
@@ -113,6 +147,12 @@ export class AppComponent {
 
   selectAbundance(abundance: Abundance) {
     this.selectedAbundance = abundance;
+  }
+
+  public selectedSpeciesName = '';
+  selectSpecies(species: Species) {
+    this.selectedSpecies = species;
+    this.selectedSpeciesName = species.common_name;
   }
  
   reverseGeoCode(lat, lng) {
@@ -132,6 +172,7 @@ export class AppComponent {
     })
     this.showAbundance = null;
     this.selectedAbundance = null;
+    this.selectedSpecies= null;
     this.validationErrorMsg = null;
     window.scrollTo(0, 0);
   }
@@ -244,7 +285,45 @@ export class AppComponent {
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
     
     this.marker.setMap(this.map);
+    navigator.geolocation.getCurrentPosition(position => {
+      console.log(position);
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+      console.log('test');
+      this.setMapMarker(this.lat, this.lng);
+      this.reverseGeoCode(this.lat, this.lng).subscribe(geo => {
+        this.streetNumber = '';
+        this.route = '';
+        this.thecity = '';
+        this.state = '';
+        if (geo['results'].length > 0) {
+            geo['results'][0].address_components.forEach(ac => {
+                if (ac.types.includes('street_number')) {
+                    this.streetNumber = ac.short_name;
+                } else if(ac.types.includes('route')) {
+                    this.route = ac.short_name;
+                } else if(ac.types.includes('locality')) {
+                    this.thecity = ac.short_name;
+                } else if(ac.types.includes('administrative_area_level_1')) {
+                  this.state = ac.short_name;
+                }
+            });
+            this.streetAddress = this.streetNumber + " " + this.route;
+        } else {
+            console.log("no location at coordinates");
+            this.validAddress = false;
+        }
+        this.fullLocation = this.streetAddress + ' ' + this.thecity + ', ' + this.state;
 
+        //update text in the input field
+        this.userSettings['inputString'] = this.fullLocation;
+        this.userSettings = Object.assign({},this.userSettings);
+
+        this.cd.detectChanges();
+        setTimeout(()=> { this.alreadyCalled = false; }, 200);
+      });
+    });
+    
     google.maps.event.addListener(this.map, 'click', (event) => {
       if (!this.alreadyCalled) {
         this.alreadyCalled = true;
@@ -294,7 +373,7 @@ export class AppComponent {
 
   this.dataService.getPhenophases()
     .subscribe((data) => {
-    this.phenophases = data;
+    this.phenophases = data.reverse();
     });
 
   this.dataService.getSpecies()

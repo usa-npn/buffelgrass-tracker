@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "buffelgrass-tracker": {
+    "brome-cheatgrass": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/buffelgrass-tracker",
+            "outputPath": "dist/brome-cheatgrass",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -56,18 +56,18 @@
           "options": {
             "sslKey": "../ssl/wwwdev/usanpn.key",
             "sslCert": "../ssl/wwwdev/usanpn.crt",
-            "browserTarget": "buffelgrass-tracker:build"
+            "browserTarget": "brome-cheatgrass:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "buffelgrass-tracker:build:production"
+              "browserTarget": "brome-cheatgrass:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "buffelgrass-tracker:build"
+            "browserTarget": "brome-cheatgrass:build"
           }
         },
         "test": {
@@ -109,11 +109,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "buffelgrass-tracker:serve"
+            "devServerTarget": "brome-cheatgrass:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "buffelgrass-tracker:serve:production"
+              "devServerTarget": "brome-cheatgrass:serve:production"
             }
           }
         },
@@ -129,5 +129,5 @@
       }
     }
   },
-  "defaultProject": "buffelgrass-tracker"
+  "defaultProject": "brome-cheatgrass"
 }
