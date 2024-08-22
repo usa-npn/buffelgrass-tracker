@@ -13,16 +13,7 @@ import { Abundance } from './abundance';
 export class DataService {
 
   constructor(private http: HttpClient) {
-    if(location.hostname.includes('local')) {
-      this.baseUrl = 'https://data.usanpn.org/springwatchservices/v0/';
-    }
-    else if(location.hostname.includes('staging')) {
-      this.baseUrl = 'https://services-staging.usanpn.org/buffelgrass-services/v0/';
-    }
-    else {
-      this.baseUrl = 'https://data.usanpn.org/springwatchservices/v0/';
-      //this.baseUrl = 'https://services.usanpn.org/buffelgrass-services/v0/';
-    }
+      this.baseUrl = 'https://services.usanpn.org/one-time-obs-services/v0/';
   }
 
   baseUrl: string;

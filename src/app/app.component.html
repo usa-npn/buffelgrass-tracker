@@ -29,7 +29,7 @@
         Welcome to the USA National Phenology Network's (USA-NPN) Red Brome and Cheatgrass green-up reporting page! Your observations will help improve the USA-NPN's <a href="https://usanpn.org/data/forecasts">Pheno Forecast</a> predictions.
         <br>
         <br>
-        <a href="https://usanpn.org/data/forecasts/red_brome">Learn more about our Red Brome forecasts »</a>
+        <a href="https://usanpn.org/data/maps/forecasts/red_brome">Learn more about our Red Brome forecasts »</a>
         <br>
         <br>
         The steps are simple - mark your location and the date of your observation, tell us what you see on your Red Brome or Cheatgrass, and submit your report!
@@ -207,7 +207,7 @@
 
         <div *ngFor="let phenophase of phenophases; let i = index" class="d-flex flex-row justify-content-center clickable">
           <div class="border entry-cell-left"
-            [ngStyle]="{ 'background-color': phenophase.color === 'Green1' ? 'rgb(92,151,80)' : 'rgb(154,193,126)'}"
+            [ngStyle]="{ 'background-color': i%2==1 ? 'rgb(92,151,80)' : 'rgb(154,193,126)'}"
             data-toggle="modal" data-target="#myModal" (click)="showPhenophaseDetails(phenophase)"> <!--data-toggle="tooltip"--><!--ngbTooltip="breakingLeafBudsToolTip"--><!--title="{{phenophase.definition}}"-->
             <div class="d-flex align-items-center justify-content-between">
                 Do you see <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="info m-1"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z"/></svg>
@@ -346,9 +346,9 @@
             <div class="card-body">
               <h5 class="card-title">Red</h5>
               <img *ngIf="selectedSpeciesName == 'Cheatgrass'" class="float-left mr-2" src="assets/Cheatgrass_NV_1.jpeg" width="100%" style="max-height: 300px;"/>
-              <img *ngIf="selectedSpeciesName == 'Red Brome'" class="float-left mr-2" src="assets/1920px-2013-06-27_14_43_17_Invasive_Cheat_grass_on_Spruce_Mountain,_Nevada.jpeg" width="100%" style="max-height: 300px;"/>
+              <img *ngIf="selectedSpeciesName == 'Red Brome'" class="float-left mr-2" src="assets/RedBrome_red_NPSRobbHannawacker_PublicDomainWork.jpeg" width="100%" style="max-height: 300px;"/>
               <div *ngIf="selectedSpeciesName == 'Cheatgrass'" style="text-align:right;">Credit: Toiyabe, <a href="https://www.gnu.org/licenses/fdl-1.3.en.html" target="_blank">(GNU Free Documentation License)</a></div>
-              <div *ngIf="selectedSpeciesName == 'Red Brome'" style="text-align:right;">Credit: Famartin, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">(CC BY-SA 3.0)</a></div>
+              <div *ngIf="selectedSpeciesName == 'Red Brome'" style="text-align:right;">Credit: NPS/Robb Hannawacker, <a href="https://copyright.universityofcalifornia.edu/use/public-domain.html#:~:text=A%20work%20is%20generally%20considered,and%20can%20be%20quoted%20extensively." target="_blank">(Public Domain Work)</a></div>
             </div>
           </div>
           <br>
@@ -358,6 +358,7 @@
               <img *ngIf="selectedSpeciesName == 'Cheatgrass'" class="float-left mr-2" src="assets/5391962-WEB.jpg" width="100%" style="max-height: 300px;"/>
               <img *ngIf="selectedSpeciesName == 'Red Brome'" class="float-left mr-2" src="assets/red brome ripe fruits.JPG" width="100%" style="max-height: 300px;"/>
               <div *ngIf="selectedSpeciesName == 'Cheatgrass'" style="text-align:right;">John M. Randall, The Nature Conservancy <a href="https://bugwood.org" target="_blank">(Bugwood.org)</a></div>
+              <div *ngIf="selectedSpeciesName == 'Red Brome'" style="text-align:right;">Credit: Scott Goetz</div>
             </div>
           </div>
           <br>

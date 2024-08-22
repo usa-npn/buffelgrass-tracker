@@ -110,10 +110,10 @@ export class AppComponent {
         this.phenophaseImage = "assets/cheat-flowers.jpeg";
         this.phenoPhotoCredit = `Credit: Paul Rothrock, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">(CC BY-SA)</a>`;
       }
-      if(phenophase.phenophase_name === 'Fruits') {
+      if(phenophase.phenophase_name === 'Ripe Fruits') {
         this.phenophaseImage = "assets/cheat-fruits.jpeg";
         this.phenoPhotoCredit = `Credit: Max Licher, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">(CC BY-SA)</a>`;
-        this.phenophaseDefinition = "One or more fruits are visible on the plant. For Bromus tectorum, the fruit is a tiny grain, hidden within tiny bracts and grouped into small clusters that hang on the end of branches along a drooping seed head, that changes texture from soft or watery to hard and drops from the plant. Do not include seed heads that have already dropped all of their grains."
+        this.phenophaseDefinition = "One or more ripe fruits are visible on the plant. For <i>Bromus tectorum</i>, a fruit is considered ripe when it is hard when squeezed and difficult to divide with a fingernail, or when it readily drops from the plant when touched. Do not include seed heads that have already dropped all of their grains."
       }
     }
     else if(this.selectedSpecies.common_name == 'Red Brome') {
@@ -125,10 +125,10 @@ export class AppComponent {
         this.phenophaseImage = "assets/bromus-flowers.jpeg";
         this.phenoPhotoCredit = `Credit: Max Licher, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">(CC BY-SA)</a>`;
       }
-      if(phenophase.phenophase_name === 'Fruits') {
+      if(phenophase.phenophase_name === 'Ripe Fruits') {
         this.phenophaseImage = "assets/bromus-fruits.jpeg";
         this.phenoPhotoCredit = `Credit: Patrick Alexander, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">(CC BY-SA)</a>`;
-        this.phenophaseDefinition = "One or more ripe fruits are visible on the plant. For Bromus rubens, a fruit is considered ripe when it is hard when squeezed and difficult to divide with a fingernail, or when it readily drops from the plant when touched. Do not include seed heads that have already dropped all of their grains.";
+        this.phenophaseDefinition = "One or more ripe fruits are visible on the plant. For <i>Bromus rubens</i>, a fruit is considered ripe when it is hard when squeezed and difficult to divide with a fingernail, or when it readily drops from the plant when touched. Do not include seed heads that have already dropped all of their grains.";
       }
      }
      else {
@@ -222,7 +222,7 @@ export class AppComponent {
       user_id: localStorage.getItem("userId"),
       latitude: this.lat,
       longitude: this.lng,
-      species_id: this.species[0].species_id,
+      species_id: this.selectedSpecies.species_id,
       client_datetime: obsDate.toISOString().slice(0, 19).replace('T', ' '),
       observations: observations
     }];
